@@ -42,6 +42,12 @@ function sortByRichest() {
   updateDOM();
 }
 
+// Filter only Millionnaires
+function showMillionaires() {
+  data = data.filter(user => user.money >= 1000000);
+  updateDOM();
+}
+
 function addData(obj) {
   data.push(obj);
 
@@ -70,6 +76,7 @@ function formatMoney(money) {
 addUserBtn.addEventListener('click', getRadomUser);
 doubleBtn.addEventListener('click', doubleMoney);
 sortBtn.addEventListener('click', sortByRichest);
+showMillionairesBtn.addEventListener('click', showMillionaires);
 
 
 
