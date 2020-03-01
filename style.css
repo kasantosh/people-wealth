@@ -34,13 +34,14 @@ button {
   font-family: inherit;
   background-color: rgb(193, 195, 199);
   border: solid 1px rgb(255, 255, 255);
+  color: #1d374e;
   border-radius: 5px;
   display: block;
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
   font-weight: bold;
-  font-size: 14px;;
+  font-size: 14px;
 }
 
 main {
