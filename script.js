@@ -28,6 +28,29 @@ async function getRadomUser() {
 
 function addData(obj) {
   data.push(obj);
+
+  updateDOM();
 }
+
+// Update DOM
+function updateDOM(providedData = data) {
+  // clear main div 
+  main.innerHTML = '<h2><span class="person-title">Person</span>Wealth</h2>';
+  providedData.forEach(item => {
+    const element = document.createElement('div');
+    element.classList.add('person');
+    element.innerHTML = `<strong>${item.name} </strong> ${formatMoney(item.money)}`;
+    main.appendChild(element);
+  })
+
+}
+
+// format number as money
+function formatMoney(money) {
+  return '$' + money.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
+
+// Event Listeners
+addUserBtn.addEventListener('click', getRadomUser);
 
 
