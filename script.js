@@ -26,6 +26,16 @@ async function getRadomUser() {
   addData(newUser);
 }
 
+// Double everyone's money
+function doubleMoney() {
+  data = data.map(user => {
+    return { ...user, money: user.money * 2 }
+  });
+
+  updateDOM();
+
+}
+
 function addData(obj) {
   data.push(obj);
 
@@ -52,5 +62,7 @@ function formatMoney(money) {
 
 // Event Listeners
 addUserBtn.addEventListener('click', getRadomUser);
+doubleBtn.addEventListener('click', doubleMoney);
+
 
 
