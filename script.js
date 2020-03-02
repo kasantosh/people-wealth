@@ -7,12 +7,12 @@ const calculateWealthBtn = document.getElementById('calculate-wealth');
 
 let data = [];
 
-getRadomUser();
-getRadomUser();
-getRadomUser();
+getRandomUser();
+getRandomUser();
+getRandomUser();
 
 // fetch random user and add money
-async function getRadomUser() {
+async function getRandomUser() {
   const res = await fetch('https://randomuser.me/api');
   const data = await res.json();
 
@@ -20,7 +20,8 @@ async function getRadomUser() {
 
   const newUser = {
     name: `${user.name.first} ${user.name.last}`,
-    money: Math.floor(Math.random() * 1000000)
+    money: Math.floor(Math.random() * 1000000),
+    image: user.picture.large
   };
 
   addData(newUser);
@@ -71,8 +72,12 @@ function updateDOM(providedData = data) {
   main.innerHTML = '<h2><span class="person-title">Person</span>Wealth</h2>';
   providedData.forEach(item => {
     const element = document.createElement('div');
+    const userImage = document.createElement('img')
+    userImage.setAttribute('src', item.image);
+    userImage.classList.add('user-image');
     element.classList.add('person');
     element.innerHTML = `<strong>${item.name} </strong> ${formatMoney(item.money)}`;
+    main.appendChild(userImage);
     main.appendChild(element);
   })
 
@@ -84,7 +89,7 @@ function formatMoney(money) {
 }
 
 // Event Listeners
-addUserBtn.addEventListener('click', getRadomUser);
+addUserBtn.addEventListener('click', getRandomUser);
 doubleBtn.addEventListener('click', doubleMoney);
 sortBtn.addEventListener('click', sortByRichest);
 showMillionairesBtn.addEventListener('click', showMillionaires);
